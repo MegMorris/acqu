@@ -1,0 +1,63 @@
+##--Author      C Collicott. Jun 6th, 2013
+##--Description
+##
+## Do some post-initialisation.
+## Should usually be done before display is setup
+#
+Target:	0. 0. 0.	938.271  #Used by TA2Physics.cc
+Input: 3.
+#
+Initialise:
+#
+Display: 1D BasicVariable	10 0 10
+#
+Display: 1D TAGGNParticle	50 0 50
+Display: 1D CAPPNParticle	10 0 10
+Display: 1D TAPSNParticle	10 0 10
+#
+Display: 1D NPhoton		8 0 8 -1
+#
+Display: 1D PhotonEnergy	180 0 900 -1 
+Display: 1D PhotonTheta		180 0 180 -1 
+Display: 1D PhotonPhi		360 -180 180 -1
+Display: 1D PhotonTime		100 -100 100 -1
+#	
+Display: 1D NProton		5 0 5 -1 
+#
+Display: 1D ProtonEnergy	180 0 900 -1
+Display: 1D ProtonTheta		180 0 180 -1
+Display: 1D ProtonPhi		360 -180 180 -1
+Display: 1D ProtonTime		100 -100 100 -1
+#
+Display: 1D NPi0		5 0 5 -1 
+#
+Display: 1D Pi0Energy		180 0 900 -1 
+Display: 1D Pi0Theta		180 0 180 -1 
+Display: 1D Pi0Phi		360 -180 180 -1 
+Display: 1D Pi0Time		100 -100 100 -1 
+#
+#
+Display: 1D 2PhotonInvariantMass 	600 0 600 -1
+#
+Display: 1D TaggerChannel	 	352 0 352 -1
+Display: 1D TaggerPhotonTime		600 -300 300 -1
+Display: 1D TaggerPi0Time		600 -300 300 -1
+#
+Display: 1D TaggerChannelPrompt 	352 0 352 -1
+Display: 1D TaggerChannelRandom 	352 0 352 -1
+Display: 1D MissingMassPrompt		400 800 1200 -1
+Display: 1D MissingMassRandom		400 800 1200 -1
+Display: 1D PhotonThetaPrompt		180 0 180 -1
+Display: 1D PhotonThetaRandom		180 0 180 -1
+Display: 1D PhotonPhiPrompt		360 -180 180 -1
+Display: 1D PhotonPhiRandom		360 -180 180 -1
+#
+Display: 1D TaggerChannelPromptPi0 	352 0 352 -1
+Display: 1D TaggerChannelRandomPi0  	352 0 352 -1
+Display: 1D MissingMassPromptPi0    	400 800 1200 -1
+Display: 1D MissingMassRandomPi0    	400 800 1200 -1
+Display: 1D Pi0ThetaPrompt	    	180 0 180 -1
+Display: 1D Pi0ThetaRandom	    	180 0 180 -1
+Display: 1D Pi0PhiPrompt	    	360 -180 180 -1
+Display: 1D Pi0PhiRandom	    	360 -180 180 -1
+#

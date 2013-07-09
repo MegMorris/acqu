@@ -1,0 +1,254 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   29th Apr 2003
+##--Update	JRM Annand...13th Jul 2007
+##--Update	C. Collicott. 8th Dec 2012 -- Added extra Multihit lines for TAPS
+##--Description
+##                *** Acqu++ <-> Root ***
+## Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Parameter File: AR-Analysis.dat (specified in AR.dat)
+## Setup basic parameters of analysis to be used
+## This one sets up an analysis of CB-TAPS-Tagger data
+##
+##-----------------------------------------------------------------------
+##
+## The following give sample specifications for
+## handlers for flash or multihit ADCs or TDCs
+##
+## Catch-TDC, where a reference TDC channel has to be specified
+## The reference TDC channel contains the trigger time which is subtracted
+## from the other specified channels
+## CB TDC's
+##              #hits   start   stop    reference
+MultiADC:       3       1401    1911    1400
+MultiADC:       3       2001    2767    2000
+## MWPC TDCS
+MultiADC:       3       4000    4639    2000
+## TAPS inner ring
+MultiADC:       3       30201   30350   30200
+## TAPS PbWO4
+MultiADC:	3	30419	30419	30200
+MultiADC:	3	30200	30200	30200
+MultiADC:	3	30600	30600	30200
+MultiADC:	3	29953	29965	30200
+##
+## SG ADC read out in 3-sum mode (#hits is always 3)
+## DC # channels summed for the pedestal (before signal leading edge)
+## signal # channels summed for the signal region of the pulse
+## tail # channels summed for the tail region (after signal trailing edge)
+## CB S-ADC's
+#               #hits   start   stop    DC      signal  tail
+MultiADC:       3       3000    3735    30      30      30
+## MWPC strip S-ADC's
+MultiADC:       3       5000    5351    30      30      30
+#
+## Stuff to monitor time dependence of counting rates and the hit pattern
+## coming from the trigger box....the parameter is the setup file name
+RateMonitor: AR-Analysis-TriggerRate.dat
+BitPattern:  AR-Analysis-TriggerPat.dat
+##
+## Apparatus setup....
+## Raw analysis may be performed without Apparati
+##              Name            Class           	Setup file
+Apparatus:      TAGG            TA2Tagger   		AR-Analysis-Tagger.dat
+Apparatus:      CB              TA2CrystalBall		AR-Analysis-CB.dat
+Apparatus:      TAPS            TA2Taps		  	AR-Analysis-TAPS.dat
+##
+## Turn on apparatus-level reconstruction
+Reconstruct-Analysis:
+##
+## Specify physics analysis
+##			Name	Class		Config File
+Physics-Analysis:	PHYS	TA2Pi0Compton	AR-Analysis-Pi0Compton.dat
+##
+## Do some post initialisation...usually necessary
+Initialise:
+##
+## Setup of extra procedures to run at periodic intervals
+## The procedures are usually held in macro script files
+## Period...every N events
+##		N	Macro File	Macro Procedure
+Period:	50000	PeriodMacro.C	PeriodMacro()
+##
+#Period:		1000	linPolMacro.C	linPolMacro()
+##
+## EndFile...each time an input data file is closed
+##EndFile:		EndFileMacro.C  EndFileMacro()
+##
+## Finish...when all input data files processed
+#Finish:		FinishMacro.C	FinishMacro()
+##
+## Save all accepted events (ie those which pass all data cuts) to a
+## ROOT file. Data saved in RAW format (ie ADC indices and values
+##Save-Event:
+##
+## Histogram ALL defined single value ADC's
+#Display: All
+## Histogram QDCs
+#Display: ADC 800  1087
+#Display: ADC 1088 1183
+## Microscope QDCs
+########### edited by Baya and Patrik
+### FASTBUS QDCs--->> Display: ADC 1184 1215
+###-FASTBUS QDCs-->>Display: ADC 1216 1263
+#
+Display: ADC 1281
+Display: ADC 20401
+##
+## (PID) Histogram ADCs 100 - 131
+#Display: ADC 100 131
+##
+## Display of multihit stuff etc.
+##
+## Display Trigger TDCS
+#
+#Display: MultiHit 2007 2007 2000 -7000  7000 0
+#
+##
+########### edited by Patrik
+########### EPT QDC's
+#Display: ADC 1216 1263 
+########### EPT CATCH TDC's, 1st hit                  
+#Display: MultiHit 1784 1799 300 -10000 5000 0   
+#Display: MultiHit 1816 1847 300 -10000 5000 0             
+#
+##########
+#
+# Display of histograms for P. Otte's trigger testing 21.09.10
+#Display: MultiHit 1413 1415 2000 -10000  10000 0
+#Display: MultiHit 1420 1422 2000 -10000  10000 0
+#Display: MultiHit 1424 1425 2000 -10000  10000 0
+## Tagger CATCH TDC's, 1st hit
+#Display: MultiHit 1401 1751 1000 -3500 -2500 0
+#Display: MultiHit 1408 1431 1000 -2500 00 0
+#Display: MultiHit 1408 1431 2000 -10000  10000 0
+#Display: MultiHit 1880 1911 3000 -20000  10000 0
+#
+#Display: MultiHit 30252 30276 1000 -5000 5000 0
+####Display: MultiHit 30201 30276 1000 -10000 0 0   backup
+##
+## PID TDCs
+#Display: MultiHit 2001 2006 1000 -3000 2000 0
+#Display: MultiHit 2008 2031 1000 -5000 -2000 0
+##
+## Tagger CATCH TDC's, 2nd hit
+#Display: MultiHit 1000 1127 2000 -1000 1000 0
+#Display: MultiHit 4000 4383 500 -4000 2000 0
+##
+## CB SADC's pedestal <<<<<<<--------------------------BAYA
+#Display: MultiHit 3000 3720 100 6000 7000 0
+## CB SADC's signal
+#Display: MultiHit 3000 3720 1000 0000 4000 1
+## CB SADC's tail
+#Display: MultiHit 3000 3720 500 -800 200 2
+#
+## CATCH TDC's, CB <<--------------------------- BAYA
+#####Display: MultiHit 2032 2752 2000 -3000 -1000 0
+#
+## CATCH TDCs CB input by Marc and Michaela
+#Display: MultiHit 2032 2752 3000 -3000 3000 0
+#
+# Hitogramming of MWPC ADC & TDCS added by E.J.D. 20/02/09
+#
+# Wire TDCs
+#Display: MultiHit 4000 4575 1000 -5000 5000 0
+#Display: MultiHit  4000 4004 1000 -5000 5000 0
+#Display: MultiHit  4456 4460 1000 -5000 5000 0
+# Strip ADCs
+#Display: MultiHit 5000 5335 2000 -1000 1000 0
+#Display: MultiHit 5000 5335 2000 -1000 1000 1
+#Display: MultiHit 5000 5335 2000 -1000 1000 2
+#Display: MultiHit  5100 5104 2000 -1000 1000 0
+#Display: MultiHit  5100 5104 2000 -1000 1000 1
+#Display: MultiHit  5100 5104 2000 -1000 1000 2
+#Display: MultiHit  5164 5168 2000 -1000 1000 0
+#Display: MultiHit  5164 5168 2000 -1000 1000 1
+#Display: MultiHit  5164 5168 2000 -1000 1000 2
+##
+## TAPS Inner Ring
+# energy
+#Display: ADC 30052 30077
+# ?
+####Display: ADC 30101 30176
+# time
+#Display: ADC 30252 30276
+# test pulse
+#Display: ADC 30350
+# time reference
+#Display: ADC 30600
+##
+## TAPS
+#Display: ADC 20001 20064
+#Display: ADC 20401 20464
+#Display: ADC 21001 21064
+#Display: ADC 21401 21464
+#Display: ADC 22001 22064
+#Display: ADC 22401 22464
+#Display: ADC 23001 23064
+#Display: ADC 23401 23464
+#Display: ADC 24001 24064
+#Display: ADC 24401 24464
+#Display: ADC 25001 25064
+#Display: ADC 25401 25464
+#Display: ADC 26001 26128
+#Display: ADC 26301 26328
+#Display: ADC 27001 27128
+#Display: ADC 27301 27328
+#Display: ADC 28001 28128
+#Display: ADC 28301 28328
+# we added the following line Baya & Julia
+Display: ADC 20201 20202
+##
+## Display blocks of scalers
+Display: Scaler 0 181
+Display: SumScaler 0 181
+Display: Scaler 182 191
+Display: SumScaler 182 191
+Display: Scaler 192 203
+Display: SumScaler 192 203
+Display: Scaler 204 555
+Display: SumScaler 204 555
+##
+## Time dependence of individual scaler rates and ratios
+Display: Rate	0	500
+Display: Rate	1	500
+Display: Rate	2	500
+Display: Rate	3	500
+Display: Rate	4	500
+Display: Rate	5	500
+Display: Rate	6	500
+Display: Rate	7	500
+Display: Rate	8	500
+Display: Rate	9	500
+Display: Rate	10	500
+Display: Rate	11	500
+Display: Rate	12	500
+Display: Rate	13	500
+Display: Rate	14	500
+Display: Rate	15	500
+Display: Rate	16	500
+Display: Rate	17	500
+##
+## Trigger pattern, and e-beam polarisation bits
+Display: Pattern	0 32 0 32
+Display: Pattern	1 64 0 64
+Display: Pattern	2 16 0 16
+Display: Pattern-N	1 32 0 32
+##
+## TAPS discriminator pattern
+#Display: Pattern        2 384 0 384 
+#Display: Pattern        3 384 0 384 
+#Display: Pattern        4 384 0 384 
+##
+#Display: 2D 1000 100 0 4000 2112M0 100 -1000 -400
+#
+#Display: 2D 1098 200 0 4000 2010M0 200 -2600 -2200
+#Display: 2D 1098 200 0 4000 1096   200  0     4000
+#Display: 2D 1164 200 0 4000 2043M0 200 -2500 -500
+##
+## CB-TAPS synchronisation monitors
+Display: 2D 20401 100 1800 2000 2005M0 100 -900 -800
+Display: 2D 2000 200 0 10000  1400   200 0 10000
+##
+##
+## END OF FILE

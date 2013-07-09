@@ -1,0 +1,81 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   13th Jan 2004
+##--Update	JRM Annand... 1st Dec 2004
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data
+##
+## Parameter File: FPcommServer.Offline
+## Configuration file for DataServer (data input for analysis)
+##
+##-----------------------------------------------------------------------
+## Number of Input streams (sources of data), Record length to write data
+## and switch 0/1 = no/yes to control data write
+##              Number streams	Record Len	Save Data
+Input-Streams:	1		32768		0
+##
+## Optional directory spec. If not specified File-Names must contain the full
+## directory path
+File-Directory: /data1/CBTAPS_data/MayJune2013/
+##
+## Specify each input stream
+## From disk file, ACQU (Mk1) format, save any output to file (save=1)
+## Input data record length, Output data record length
+##
+##            	Source	Format	Save?	RecLen	Buffers	Swap	MarkID
+#Stream-Spec:	File	Mk1	0	32768	32	0	400
+Stream-Spec:	File	Mk2	0	32768	32	0	400
+##
+## Now the list of data files to analyse
+##		File Name	1st rec	Last rec
+#File-Name:	CB_36000.dat 	0	0
+#
+#File-Name:	Compton_770.dat 	0	0
+#
+#File-Name:	RunMk2_ComptApr13_731.dat	0	0
+#File-Name:	RunMk2_ComptApr13_900.dat	0	0
+#File-Name:	RunMk2_ComptApr13_1068.dat	0	0
+#File-Name:	RunMk2_ComptApr13_1069.dat	0	0
+#File-Name:	RunMk2_ComptApr13_1113.dat	0	0
+#
+#File-Name:	RunMk2_AlphaBetaMay13_1404.dat 	0	0
+#
+# 10000 Reversed
+#File-Name:	RunPaoloTest_May13_1532.dat 	0	0
+# 5000 Reversed
+#File-Name:	RunPaoloTest_May13_1533.dat 	0	0
+# 4000 Reversed
+#File-Name:	RunPaoloTest_May13_1534.dat 	0	0
+# 3500 Reversed
+#File-Name:	RunPaoloTest_May13_1535.dat 	0	0
+# 5000 Proper
+#File-Name:	RunPaoloTest_May13_1536.dat 	0	0
+# 4000 Proper
+#File-Name:	RunPaoloTest_May13_1537.dat 	0	0
+# 3500 Proper
+#File-Name:	RunPaoloTest_May13_1538.dat 	0	0
+# 4500 Proper
+#File-Name:	RunPaoloTest_May13_1539.dat 	0	0
+# Orig Proper
+#File-Name:	RunPaoloTest_May13_1540.dat 	0	0
+# 10000 Proper
+#File-Name:	RunPaoloTest_May13_1541.dat 	0	0
+# 4250 Proper
+#File-Name:	RunPaoloTest_May13_1542.dat 	0	0
+#
+# Full
+#File-Name:	Run_Compton_May13_1548.dat 	0	0
+# Empty
+#File-Name:	Run_Compton_May13_1550.dat 	0	0
+# 1 mm
+#File-Name:	Run_Compton_May13_1552.dat 	0	0
+# 2.5 mm
+#File-Name:	Run_Compton_May13_1558.dat 	0	0
+#
+# Current data
+#
+File-Name:	Run_Compton_May13_1620.dat 	0	0
+#
+##
+##
+## END

@@ -1,0 +1,45 @@
+##############################################################################
+##                                                                          ##
+##                                                                          ##
+##       TAPS2009  Config File  for use of TA2Taps2009-class in AcquRoot    ##
+##                                                                          ##
+##############################################################################
+##      Specify list of detectors which constitute the TAPS apparatus       ##
+##                                                                          ##
+##	  Name         Class Name		Setup file                  ##
+##############################################################################
+Detector: BaF2          TA2TAPS_BaF2		AR-Analysis-TAPS-BaF2.dat
+Detector: VetoBaF2      TA2TAPS_Veto		AR-Analysis-TAPS-Veto.dat
+#
+#
+#
+###############################################################################
+Reconstruct:
+##
+## PDG database	# particles
+ParticleID: 	16
+## Do some post-initialisation.
+## Should usually be done before display is setup
+Initialise:
+##
+TAPS-Factor: 1.0
+#
+#
+#
+##############################################################################
+TAPS_SimpleReconstruct: 0
+#
+##############################################################################
+TAPS_dEvE_Cuts: data/cuts/TAPS_DeltaE-E.root
+TAPS_dEvE_Proton: 1
+TAPS_dEvE_Proton_CutName: p
+TAPS_dEvE_ChPion: 1
+TAPS_dEvE_ChPion_CutName: pi
+TAPS_dEvE_Electron: 0
+TAPS_dEvE_Electron_CutName: pie
+#
+##############################################################################
+Display: 2D Echarged 800 0 800 -1        DeltaE 140 0 7 -1
+Display: 2D Echargedcl 1000 0 1000 -1    DeltaE 140 0 7 -1
+Display: 2D EchargedIndex 500 0 500 -1   DeltaE 140 0 7 -1
+# End
