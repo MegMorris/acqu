@@ -44,7 +44,8 @@ Branch:   emwpc         1024
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #ROOT file(s) (GEANT4 output) to be analysed. Add more lines for more files
 #
-TreeFile:  simfiles/compton/LH2_10cm/compton_p_200_out.root
+#TreeFile:  simfiles/compton/LH2_10cm/compton_p_200_out.root
+TreeFile:  simfiles/basic/p_200_90_0_out.root
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #

@@ -49,7 +49,7 @@ Element:  114        0.119             20.0              23                0.003
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#Global (all PID2 elements) scaling parameter for energy correction
+#Global (all PID elements) scaling parameter for energy correction
 Energy-Scale:  0.70
 #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
